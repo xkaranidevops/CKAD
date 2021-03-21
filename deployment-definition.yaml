@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloud-app
+  template:
+    metadata:
+      labels:
+        app: cloud-app
+    spec:
+      containers:
+      - name: cloud-app-pod
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
